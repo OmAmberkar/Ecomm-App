@@ -5,5 +5,23 @@ import path from 'path'
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  resolve: { alias: { '@': path.resolve(__dirname, './src') } }
+  resolve: { alias: { '@': path.resolve(__dirname, './src') } },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'vendor-react': ['react', 'react-dom', 'react-router-dom'],
+          'vendor-ui': [
+            'lucide-react',
+            'sonner',
+            'class-variance-authority',
+            'clsx',
+            'tailwind-merge',
+            '@radix-ui/react-select',
+            '@radix-ui/react-slot',
+          ],
+        }
+      }
+    }
+  }
 })
