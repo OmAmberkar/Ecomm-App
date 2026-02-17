@@ -6,6 +6,8 @@ WORKDIR /app
 
 # copy package files
 COPY package*.json ./
+
+# copy prisma files
 COPY prisma ./prisma/
 
 #  install all the dependencies
